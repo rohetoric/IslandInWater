@@ -23,7 +23,7 @@ class IslandsInWater():
                            (row, col + 1), (row - 1, col - 1),
                            (row - 1, col + 1), (row + 1, col + 1),
                            (row + 1, col - 1)
-                           ]  # covering the perimeter of an element
+                           ]  # covering the perimeter of a matrix element
     for bounding_row, bounding_col in bounding_conditions:
       if bounding_row >= 0 and bounding_col >= 0 and bounding_row < len(
           self.island_matrix) and bounding_col < len(
@@ -50,6 +50,7 @@ def main(args):
   islandsinwater.read_from_file()
   num_of_islands = islandsinwater.count_number_of_islands()
   print(num_of_islands)
+  return num_of_islands #for unittesting purpose
 
 
 if __name__ == '__main__':
