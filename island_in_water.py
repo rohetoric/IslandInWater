@@ -20,8 +20,7 @@ class IslandsInWater():
                            (row,col+1), (row-1,col-1), (row-1,col+1),
                            (row+1,col+1), (row+1, col-1)]
     for bounding_row, bounding_col in bounding_conditions:
-      if bounding_row >= 0 and bounding_col >= 0 and bounding_row <= len(self.island_matrix) and bounding_col <= len(self.island_matrix[row]) and self.island_matrix[bounding_row][bounding_col] == 1:
-        print(f"We are in position :: {bounding_row} | {bounding_col}")
+      if bounding_row >= 0 and bounding_col >= 0 and bounding_row < len(self.island_matrix) and bounding_col < len(self.island_matrix[row]) and self.island_matrix[bounding_row][bounding_col] == 1:
         self._dfs(bounding_row, bounding_col)
     
   def count_number_of_islands(self) -> int:
