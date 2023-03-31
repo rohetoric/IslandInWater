@@ -21,25 +21,27 @@ class IslandsInWater():
                            (row+1,col+1), (row+1, col-1)]
     for bounding_row, bounding_col in bounding_conditions:
       if bounding_row >= 0 and bounding_col >= 0 and bounding_row <= len(self.island_matrix) and bounding_col <= len(self.island_matrix[row]) and self.island_matrix[bounding_row][bounding_col] == 1:
+        print(f"We are in position :: {bounding_row} | {bounding_col}")
         self._dfs(bounding_row, bounding_col)
     
   def count_number_of_islands(self) -> int:
     num_of_islands = 0
     for row in range(len(self.island_matrix)):
-      for col in range(len(self.index_matrix[row])):
+      for col in range(len(self.island_matrix[row])):
         if self.island_matrix[row][col] == 1:
           num_of_islands = num_of_islands + 1
           self._dfs(row, col)
-    return num_of_islands
-          
-    
-
+    return num_of_islands 
+  
 def main(args):
-  filename = args[0]
+  if args is None:
+    filename = "islands.txt"
+  else:
+    filename = args[0]
   islandsinwater = IslandsInWater(filename)
   islandsinwater.read_from_file()
-  
-
+  num_of_islands = islandsinwater.count_number_of_islands()
+  print(num_of_islands)
 
 if __name__ == '__main__':
   main(sys.argv[1:])
